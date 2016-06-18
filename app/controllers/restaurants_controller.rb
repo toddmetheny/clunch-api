@@ -3,6 +3,8 @@ class RestaurantsController < ApplicationController
 
   def index
     @restaurants = Restaurant.all
+
+    respond_with @restaurants
   end
 
   def show
@@ -10,14 +12,13 @@ class RestaurantsController < ApplicationController
 
   def new
     @restaurant = Restaurant.new
-  end
 
-  # GET /restaurants/1/edit
+    respond_with @restaurant
+  end
+  
   def edit
   end
 
-  # POST /restaurants
-  # POST /restaurants.json
   def create
     @restaurant = Restaurant.new(restaurant_params)
 
@@ -30,8 +31,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /restaurants/1
-  # PATCH/PUT /restaurants/1.json
   def update
     respond_to do |format|
       if @restaurant.update(restaurant_params)
@@ -42,8 +41,6 @@ class RestaurantsController < ApplicationController
     end
   end
 
-  # DELETE /restaurants/1
-  # DELETE /restaurants/1.json
   def destroy
     @restaurant.destroy
     respond_to do |format|
